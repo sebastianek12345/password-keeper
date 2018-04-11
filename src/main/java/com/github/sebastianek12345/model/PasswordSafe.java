@@ -11,13 +11,19 @@ public class PasswordSafe {
     private Integer nextId = 0;
 
     public void addEntries(String service, String login, String password) {
+
         Integer id = nextId++;
         PasswordEntry passwordEntry = new PasswordEntry(id, password, login, service);
-        passwordEntries.put(passwordEntry.getId(), passwordEntry);
+        passwordEntries.put(passwordEntry.getId(), PasswordEntry.Builder.create().withId(nextId)
+                .withPassword(password)
+                .withLogin(login)
+                .withService(service)
+                .build());
     }
 
     public void removeEntries(Integer id) {
         passwordEntries.remove(id);
+        System.out.println("Udane kasowanie");
     }
 
 
@@ -25,6 +31,7 @@ public class PasswordSafe {
         for (PasswordEntry passwordEntry : passwordEntries.values()) {
             if (passwordEntry.getServiceName().equals(service)) {
                 return passwordEntry.getPasswordName();
+
             }
         }
         return null;

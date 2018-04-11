@@ -1,5 +1,7 @@
 package com.github.sebastianek12345.model;
 
+import com.sun.media.jfxmedia.events.BufferListener;
+
 import java.util.Objects;
 
 public class PasswordEntry {
@@ -74,4 +76,44 @@ public class PasswordEntry {
                 ", serviceName='" + serviceName + '\'' +
                 '}';
     }
+
+    public static class Builder {
+
+        private int id;
+        private String service;
+        private String login;
+        private String password;
+
+        private Builder() {
+        }
+
+        public static Builder create() {
+            return new Builder();
+        }
+
+        public Builder withId(int id){
+            this.id = id;
+            return this;
+        }
+
+        public Builder withService(String service){
+            this.service = service;
+            return this;
+        }
+
+        public Builder withLogin(String login){
+            this.login = login;
+            return this;
+        }
+
+        public Builder withPassword(String password){
+            this.password = password;
+            return this;
+        }
+
+        public PasswordEntry build(){
+            return new PasswordEntry(id,password,login,service);
+        }
+    }
+
 }
