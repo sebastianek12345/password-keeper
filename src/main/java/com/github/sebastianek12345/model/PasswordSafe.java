@@ -36,4 +36,9 @@ public class PasswordSafe {
         }
         return null;
     }
+
+    public boolean exists(String aSuper, String duper) {
+        return passwordEntries.values().stream()
+                .anyMatch(e -> e.getServiceName().equals(aSuper) && e.getLogin().equals(duper));
+    }
 }

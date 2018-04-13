@@ -21,9 +21,9 @@ public class PasswordSafeController {
                 .map(gson::toJson)
                 .collect(Collectors.toList());
 
-        File file = new File("password-manager-file.pwm");
+        File file = new File("src/main/java/com/github/sebastianek12345/text/password-manager-file.pwm");
         try {
-            FileUtils.writeLines(file, jsons);
+            FileUtils.writeLines(file, jsons, true);
         } catch (IOException e) {
             e.printStackTrace();
         }
