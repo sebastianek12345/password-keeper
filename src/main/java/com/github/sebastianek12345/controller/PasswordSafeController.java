@@ -1,6 +1,7 @@
 package com.github.sebastianek12345.controller;
 
 import com.github.sebastianek12345.model.PasswordEntry;
+import com.github.sebastianek12345.model.PasswordSafe;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import org.apache.commons.io.FileUtils;
@@ -14,7 +15,7 @@ public class PasswordSafeController {
 
     List<String> gson;
 
-    public void saveToFile(List<PasswordEntry> passwordEntries) {
+    public void saveToFile(List<PasswordEntry> passwordEntries, boolean append) {
 
         Gson gson = new Gson();
         List<String> jsons = passwordEntries.stream()
@@ -23,10 +24,16 @@ public class PasswordSafeController {
 
         File file = new File("src/main/java/com/github/sebastianek12345/text/password-manager-file.pwm");
         try {
-            FileUtils.writeLines(file, jsons, true);
+            FileUtils.writeLines(file, jsons, append);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public PasswordSafe init(String readFile){
+
+        Collection<PasswordEntry> passwordEntries = readFromFile(readFile);
+        return new PasswordSafe(passwordEntries);
     }
 
     public Collection<PasswordEntry> readFromFile(String readFile) {

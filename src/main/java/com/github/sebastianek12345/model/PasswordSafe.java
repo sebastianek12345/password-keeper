@@ -1,34 +1,49 @@
 package com.github.sebastianek12345.model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class PasswordSafe {
 
-    private Map<Integer, PasswordEntry> passwordEntries = new HashMap<>();
+    private Map<Integer, PasswordEntry> entries = new HashMap<>();
     private Integer nextId = 0;
 
-    public void addEntries(String service, String login, String password) {
+    public PasswordSafe() {
+
+    }
+
+    public PasswordSafe(Collection<PasswordEntry> passwordEntries) {
+        passwordEntries.forEach(passwordEntry -> entries.put(passwordEntry.getId(), passwordEntry));
+        nextId = entries.values().stream()
+                .mapToInt(PasswordEntry::getId)
+                .max()
+                .orElse(0) + 1;
+    }
+
+    public Collection<PasswordEntry> all() {
+        return entries.values();
+    }
+
+    public PasswordEntry addEntries(String service, String login, String password) {
 
         Integer id = nextId++;
         PasswordEntry passwordEntry = new PasswordEntry(id, password, login, service);
-        passwordEntries.put(passwordEntry.getId(), PasswordEntry.Builder.create().withId(nextId)
+        entries.put(passwordEntry.getId(), PasswordEntry.Builder.create().withId(nextId)
                 .withPassword(password)
                 .withLogin(login)
                 .withService(service)
                 .build());
+
+        return passwordEntry;
     }
 
     public void removeEntries(Integer id) {
-        passwordEntries.remove(id);
+        entries.remove(id);
         System.out.println("Udane kasowanie");
     }
 
 
     public String show(String service) {
-        for (PasswordEntry passwordEntry : passwordEntries.values()) {
+        for (PasswordEntry passwordEntry : entries.values()) {
             if (passwordEntry.getServiceName().equals(service)) {
                 return passwordEntry.getPasswordName();
 
@@ -38,7 +53,7 @@ public class PasswordSafe {
     }
 
     public boolean exists(String aSuper, String duper) {
-        return passwordEntries.values().stream()
+        return entries.values().stream()
                 .anyMatch(e -> e.getServiceName().equals(aSuper) && e.getLogin().equals(duper));
     }
 }

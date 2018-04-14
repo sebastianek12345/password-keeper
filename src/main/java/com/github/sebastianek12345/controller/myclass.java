@@ -16,11 +16,11 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JOptionPane;
 
-public class SymmetricKeyExample {
+public class myclass {
     private SecretKeySpec secretKey;
     private Cipher cipher;
 
-    public SymmetricKeyExample(String secret, int length, String algorithm)
+    public myclass(String secret, int length, String algorithm)
             throws UnsupportedEncodingException, NoSuchAlgorithmException, NoSuchPaddingException {
         byte[] key = new byte[length];
         key = fixSecret(secret, length);
@@ -70,9 +70,9 @@ public class SymmetricKeyExample {
         File dir = new File("src/main/java/com/github/sebastianek12345/text");
         File[] filelist = dir.listFiles();
 
-        SymmetricKeyExample ske;
+        myclass ske;
         try {
-            ske = new SymmetricKeyExample("!@#$MySecr3tPassw0rd", 16, "AES");
+            ske = new myclass("!@#$MySecr3tPassw0rd", 16, "AES");
 
             int choice = -2;
             while (choice != -1) {

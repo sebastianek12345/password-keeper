@@ -11,6 +11,11 @@ public class PasswordEntry {
     private String login;
     private String serviceName;
 
+    public PasswordEntry(){
+
+    }
+
+
     public PasswordEntry(String passwordName, String login, String serviceName) {
         this.passwordName = passwordName;
         this.login = login;

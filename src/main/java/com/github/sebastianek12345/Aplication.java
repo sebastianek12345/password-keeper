@@ -19,7 +19,7 @@ public class Aplication {
     public static void main(String[] args){
 
         ViewController viewController = new ViewController();
-        viewController.chooseFunctionality();
+        viewController.options();
 
 //        PasswordSafe passwordSafe = new PasswordSafe();
 //        PasswordEntry passwordEntry = new PasswordEntry(1,"sebo","super","daniel");
