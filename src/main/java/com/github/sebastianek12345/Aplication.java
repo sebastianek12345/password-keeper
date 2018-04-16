@@ -21,36 +21,5 @@ public class Aplication {
         ViewController viewController = new ViewController();
         viewController.options();
 
-//        PasswordSafe passwordSafe = new PasswordSafe();
-//        PasswordEntry passwordEntry = new PasswordEntry(1,"sebo","super","daniel");
-//        PasswordEntry passwordEntry1 = new PasswordEntry(2,"tomek","grejt","trep");
-//        PasswordEntry passwordEntry2 = new PasswordEntry(3,"smarkacz","dupcia1234","mati");
-//        PasswordEntry passwordEntry3 = new PasswordEntry(4,"dupek","twoja stara","gmail");
-//
-//
-//        PasswordSafeController passwordSafeController = new PasswordSafeController();
-//        passwordSafeController.saveToFile(Arrays.asList(passwordEntry, passwordEntry1, passwordEntry2,passwordEntry3));
-//
-//        passwordSafeController.readFromFile("password-manager-file.pwm").forEach(System.out::println);
-//
-//
-
-
-
-
-//        PasswordEntry passwordEntry = new PasswordEntry(1,"w","twoja","ds");
-//        Gson gson = new Gson();
-//        String passwordEntryJson = gson.toJson(passwordEntry);
-//        System.out.println(passwordEntryJson);
-//
-//
-//        File file = new File("password-manager-file.pwm");
-//        try {
-//            FileUtils.writeStringToFile(file,passwordEntryJson,"UTF-8");
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-
-
     }
 }

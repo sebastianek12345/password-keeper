@@ -38,7 +38,7 @@ public class PasswordSafe {
 
     public void removeEntries(Integer id) {
         entries.remove(id);
-        System.out.println("Udane kasowanie");
+
     }
 
 
